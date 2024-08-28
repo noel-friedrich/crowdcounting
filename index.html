@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crowdcounting</title>
+        <link rel="icon" type="image/png" href="assets/logo.png">
+
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quicksand">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <main>
+            <div class="sidebar left">
+                <h2>Video Settings</h2>
+                <div class="range-container" id="video-speed-range-container">
+                    <label for="video-speed">Video Speed: 1x</label>
+                    <input name="video-speed" type="range" min="0" max="18" value="8" title="Video Speed Range">
+                </div>
+                <button onclick="upload()" title="Upload Video File">Upload Video</button>
+                <button onclick="playpause()" title="Play / Pause Video [Space]">Play/Pause</button>
+                <hr>
+                <h2>Markings (<output id="markings-output"></output>)</h2>
+                <button onclick="downloadMarkings()" title="Export all markings into .csv file">Export Markings</button>
+                <button onclick="resetMarkings()" title="Delete all markings">Clear Markings</button>
+                <button onclick="deleteLastMarking()" title="Delete the last marking you made [Ctrl + Z]">Delete last Marking</button>
+                <button onclick="deleteVisibleMarkings()" title="Delete all markings visible in the current frame">Delete visible Markings</button>
+                <div class="range-container">
+                    <label>Counting Line Position</label>
+                    <input type="range" id="counting-line-start-x" min="0" max="100" value="0" title="Counting Line Start X-Position">
+                    <input type="range" id="counting-line-start-y" min="0" max="100" value="0" title="Counting Line Start Y-Position">
+                    <input type="range" id="counting-line-end-x" min="0" max="100" value="0" title="Counting Line End X-Position">
+                    <input type="range" id="counting-line-end-y" min="0" max="100" value="0" title="Counting Line End Y-Position">
+                    <input type="range" id="counting-line-width" min="1" max="20" value="5" title="Counting Line Width">
+                </div>
+            </div>
+            <div class="main-container">
+                <canvas id="videoCanvas"></canvas>
+            </div>
+            <div class="bottombar">
+                <canvas id="timelineCanvas"></canvas>
+            </div>
+        </main>
+
+        <script src="timeline.js"></script>
+        <script src="video.js"></script>
+        <script src="markings.js"></script>
+        <script src="settings.js"></script>
+        <script src="main.js"></script>
+    </body>
+
+</html>
