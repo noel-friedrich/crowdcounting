@@ -97,6 +97,14 @@ function renderTimeline() {
         timelineContext.stroke()
     }
 
+    function drawMarkingAtTime(time) {
+        const x = timelineState._timeToX(time)
+        timelineContext.beginPath()
+        timelineContext.arc(x, timelineCanvas.height * 0.225, timelineCanvas.height * 0.1, 0, Math.PI * 2)
+        timelineContext.fillStyle = "rgba(0, 0, 255, 0.2)"
+        timelineContext.fill()
+    }
+
     // draw regular ticks
     let markInterval = 1 // 1 2 5 10 20 50 100 200 500 ...
     while (timelineCanvas.width / (timelineState.viewWidth / (markInterval / 100)) < 5) {
@@ -124,6 +132,14 @@ function renderTimeline() {
     }
 
     drawMarkAtTime(0.0, {color: "#aaa", height: 0.6})
+
+    // draw markings
+    for (const marking of markings) {
+        if (marking.timestamp < timelineState.viewStart || marking.timestamp > timelineState.viewEnd) {
+            continue
+        }
+        drawMarkingAtTime(marking.timestamp)
+    }
 
     // draw timestamps
     const fontSize = timelineCanvas.height * 0.2

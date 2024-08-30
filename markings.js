@@ -56,7 +56,7 @@ function loadMarkings() {
     }
 
     try {
-        return markingString.split(";").map(s => Marking.fromString(s))
+        return markingString.split(";").filter(l => !!l).map(s => Marking.fromString(s))
     } catch (e) {
         console.error(e)
         return []
