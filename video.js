@@ -12,8 +12,8 @@ let viewZoom = 1
 function updateVideoCanvasContent() {
     videoContext.clearRect(0, 0, videoCanvas.width, videoCanvas.height)
     if (currVideoElement) {
-        const videoWidth = videoCanvas.width / viewZoom
-        const videoHeight = videoCanvas.height / viewZoom
+        const videoWidth = videoCanvas.width // / viewZoom
+        const videoHeight = videoCanvas.height // / viewZoom
         const startX = viewCentre.x * videoCanvas.width - videoWidth / 2
         const startY = viewCentre.y * videoCanvas.height - videoHeight / 2
         videoContext.drawImage(currVideoElement, startX, startY, videoWidth, videoHeight)
@@ -36,8 +36,8 @@ function updateVideoCanvasSize({paddingPx=40}={}) {
         aspectRatio = currVideoElement.videoWidth / currVideoElement.videoHeight
     }
 
-    const availWidth = videoCanvasContainer.clientWidth - paddingPx * 2
-    const availHeight = videoCanvasContainer.clientHeight - paddingPx * 2
+    const availWidth = (videoCanvasContainer.clientWidth - paddingPx * 2) / viewZoom
+    const availHeight = (videoCanvasContainer.clientHeight - paddingPx * 2) / viewZoom
 
     if (availWidth / availHeight < aspectRatio) {
         videoCanvas.width = availWidth
@@ -140,8 +140,8 @@ function playpause() {
 }
 
 videoCanvas.addEventListener("wheel", event => {
-    return // TODO
     viewZoom += event.deltaY / 1000
     viewZoom = Math.min(Math.max(0.1, viewZoom), 1)
+    updateVideoCanvasSize()
     updateVideoCanvasContent()
 })
