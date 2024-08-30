@@ -24,9 +24,11 @@
                 <hr>
                 <h2>Markings (<output id="markings-output"></output>)</h2>
                 <button onclick="downloadMarkings()" title="Export all markings into .csv file">Export Markings</button>
-                <button onclick="resetMarkings()" title="Delete all markings">Clear Markings</button>
+                <button onclick="resetMarkings()" title="Delete all markings">Reset Markings</button>
                 <button onclick="deleteLastMarking()" title="Delete the last marking you made [Ctrl + Z]">Delete last Marking</button>
                 <button onclick="deleteVisibleMarkings()" title="Delete all markings visible in the current frame">Delete visible Markings</button>
+                <hr>
+                <h2>Marking Settings</h2>
                 <div class="range-container">
                     <label>Counting Line Position</label>
                     <input type="range" id="counting-line-start-x" min="0" max="100" value="0" title="Counting Line Start X-Position">
@@ -35,6 +37,11 @@
                     <input type="range" id="counting-line-end-y" min="0" max="100" value="0" title="Counting Line End Y-Position">
                     <input type="range" id="counting-line-width" min="1" max="20" value="5" title="Counting Line Width">
                 </div>
+                <div class="range-container" id="marking-size-range-container">
+                    <label for="marking-size">Marking Size: 5px</label>
+                    <input name="marking-size" type="range" min="1" max="20" value="8" title="Marking Size Range">
+                </div>
+                <button onclick="resetAllSettings()">Reset All Settings</button>
             </div>
             <div class="main-container">
                 <canvas id="videoCanvas"></canvas>

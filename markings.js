@@ -132,6 +132,10 @@ videoCanvas.addEventListener("click", event => {
 })
 
 function renderMarkings() {
+    if (currVideoElement === null) {
+        return
+    }
+
     const visibleMarkings = getVisibleMarkings()
 
     for (const marking of visibleMarkings) {
@@ -139,7 +143,7 @@ function renderMarkings() {
         const color = `rgba(0, 0, 255, ${(progress ** 2) * 0.7})`
         const xPosition = marking.x / 100 * videoCanvas.width
         const yPosition = marking.y / 100 * videoCanvas.height
-        const radius = progress * videoCanvas.height * 0.08
+        const radius = progress * videoCanvas.height * settings.getValue("marking-size") / 100
 
         videoContext.beginPath()
         videoContext.arc(xPosition, yPosition, radius, 0, Math.PI * 2)
