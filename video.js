@@ -8,6 +8,7 @@ let currVideoElement = null
 
 const viewCentre = {x: 0.5, y: 0.5}
 let viewZoom = 1
+let videoCanvasOffset = {x: 0.5, y: 0.5}
 
 function updateVideoCanvasContent() {
     videoContext.clearRect(0, 0, videoCanvas.width, videoCanvas.height)
@@ -31,6 +32,9 @@ function updateVideoCanvasContent() {
 }
 
 function updateVideoCanvasSize({paddingPx=40}={}) {
+    videoCanvas.style.left = `${videoCanvasOffset.x * 100}%`
+    videoCanvas.style.top = `${videoCanvasOffset.y * 100}%`
+
     let aspectRatio = 16 / 9
     if (currVideoElement) {
         aspectRatio = currVideoElement.videoWidth / currVideoElement.videoHeight
