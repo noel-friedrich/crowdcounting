@@ -16,9 +16,9 @@ html, body {
 
     --main-background: #f5f5f5;
 
-    --content-border: none; /*1px solid #ccc;*/
+    --content-border: 1px solid #ccc; /* none */
     --element-border: 1px solid #a1a1a1;
-    --content-shadow: 0 0 10px rgba(0, 0, 0, 0.2);;
+    --content-shadow: none; /*0 0 10px rgba(0, 0, 0, 0.2); */
 
     --button-background: var(--main-background);
     --button-hover-background: #f8f8f8;
