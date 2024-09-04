@@ -143,12 +143,12 @@ function renderMarkings() {
         const color = `rgba(0, 0, 255, ${(progress ** 2) * 0.7})`
         const xPosition = marking.x / 100 * videoCanvas.width
         const yPosition = marking.y / 100 * videoCanvas.height
-        const radius = progress * Math.min(videoCanvas.height, videoCanvas.width) * settings.getValue("marking-size") / 100
+        const radius = progress * Math.min(videoCanvas.height, videoCanvas.width) * settings.getValue("marking-radius") / 100
 
         videoContext.beginPath()
         videoContext.arc(xPosition, yPosition, radius, 0, Math.PI * 2)
         videoContext.strokeStyle = color
-        videoContext.lineWidth = 2
+        videoContext.lineWidth = settings.getValue("marking-width")
         videoContext.stroke()
     }
 }

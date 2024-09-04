@@ -120,8 +120,13 @@ settings.addSetting("counting-line-end-x", 0).addRangeElementWithSameName()
 settings.addSetting("counting-line-end-y", 0).addRangeElementWithSameName()
 settings.addSetting("counting-line-width", 5).addRangeElementWithSameName()
 
-settings.addSetting("marking-size", 10).addRangeContainer("marking-size-range-container", {
-    formatString: val => `Marking Size: ${val}%`,
+settings.addSetting("marking-radius", 10).addRangeContainer("marking-radius-range-container", {
+    formatString: val => `Marking Radius: ${val}%`,
+    setter: () => updateVideoCanvasContent()
+})
+
+settings.addSetting("marking-width", 3).addRangeContainer("marking-width-range-container", {
+    formatString: val => `Marking Width: ${val}px`,
     setter: () => updateVideoCanvasContent()
 })
 
